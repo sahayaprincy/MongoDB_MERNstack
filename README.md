@@ -1,10 +1,23 @@
-# `@typescript-eslint/eslint-plugin`
+---
+title: Overview
+sidebar_label: Overview
+pagination_next: null
+pagination_prev: null
+slug: /
+---
 
-An ESLint plugin which provides lint rules for TypeScript codebases.
+`@typescript-eslint/eslint-plugin` includes over 100 rules that detect best practice violations, bugs, and/or stylistic issues specifically for TypeScript code.
+See [Configs](/linting/configs) for how to enable recommended rules using configs.
 
-[![NPM Version](https://img.shields.io/npm/v/@typescript-eslint/eslint-plugin.svg?style=flat-square)](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
-[![NPM Downloads](https://img.shields.io/npm/dm/@typescript-eslint/eslint-plugin.svg?style=flat-square)](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
+## Supported Rules
 
-👉 See **https://typescript-eslint.io/architecture/utils** for our Getting Started docs.
+import RulesTable from "@site/src/components/RulesTable";
 
-> See https://typescript-eslint.io for general documentation on typescript-eslint, the tooling that allows you to run ESLint and Prettier on TypeScript code.
+<RulesTable />
+
+## Extension Rules
+
+In some cases, ESLint provides a rule itself, but it doesn't support TypeScript syntax; either it crashes, or it ignores the syntax, or it falsely reports against it.
+In these cases, we create what we call an extension rule; a rule within our plugin that has the same functionality, but also supports TypeScript.
+
+<RulesTable extensionRules />
