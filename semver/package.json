@@ -1,28 +1,50 @@
 {
-  "name": "semver",
-  "version": "6.3.0",
-  "description": "The semantic version parser used by npm.",
-  "main": "semver.js",
-  "scripts": {
-    "test": "tap",
-    "preversion": "npm test",
-    "postversion": "npm publish",
-    "postpublish": "git push origin --follow-tags"
-  },
-  "devDependencies": {
-    "tap": "^14.3.1"
-  },
-  "license": "ISC",
-  "repository": "https://github.com/npm/node-semver",
-  "bin": {
-    "semver": "./bin/semver.js"
-  },
-  "files": [
-    "bin",
-    "range.bnf",
-    "semver.js"
-  ],
-  "tap": {
-    "check-coverage": true
-  }
+    "name": "@types/semver",
+    "version": "7.3.13",
+    "description": "TypeScript definitions for semver",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/semver",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Bart van der Schoor",
+            "url": "https://github.com/Bartvds",
+            "githubUsername": "Bartvds"
+        },
+        {
+            "name": "BendingBender",
+            "url": "https://github.com/BendingBender",
+            "githubUsername": "BendingBender"
+        },
+        {
+            "name": "Lucian Buzzo",
+            "url": "https://github.com/LucianBuzzo",
+            "githubUsername": "LucianBuzzo"
+        },
+        {
+            "name": "Klaus Meinhardt",
+            "url": "https://github.com/ajafff",
+            "githubUsername": "ajafff"
+        },
+        {
+            "name": "ExE Boss",
+            "url": "https://github.com/ExE-Boss",
+            "githubUsername": "ExE-Boss"
+        },
+        {
+            "name": "Piotr Błażejewicz",
+            "url": "https://github.com/peterblazejewicz",
+            "githubUsername": "peterblazejewicz"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/semver"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "5443a0792891f230352efbc23f545699de0ce8eef9fe3e28cefd36a3fe993eb6",
+    "typeScriptVersion": "4.1"
 }

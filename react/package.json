@@ -1,96 +1,184 @@
 {
-  "name": "@testing-library/react",
-  "version": "13.4.0",
-  "description": "Simple and complete React DOM testing utilities that encourage good testing practices.",
-  "main": "dist/index.js",
-  "types": "types/index.d.ts",
-  "module": "dist/@testing-library/react.esm.js",
-  "engines": {
-    "node": ">=12"
-  },
-  "scripts": {
-    "prebuild": "rimraf dist",
-    "build": "npm-run-all --parallel build:main build:bundle:main build:bundle:pure",
-    "build:bundle:main": "dotenv -e .bundle.main.env kcd-scripts build -- --bundle --no-clean",
-    "build:bundle:pure": "dotenv -e .bundle.main.env -e .bundle.pure.env kcd-scripts build -- --bundle --no-clean",
-    "build:main": "kcd-scripts build --no-clean",
-    "format": "kcd-scripts format",
-    "install:csb": "npm install",
-    "lint": "kcd-scripts lint",
-    "setup": "npm install && npm run validate -s",
-    "test": "kcd-scripts test",
-    "test:update": "npm test -- --updateSnapshot --coverage",
-    "typecheck": "kcd-scripts typecheck --build types",
-    "validate": "kcd-scripts validate"
-  },
-  "files": [
-    "dist",
-    "dont-cleanup-after-each.js",
-    "pure.js",
-    "pure.d.ts",
-    "types/*.d.ts"
-  ],
-  "keywords": [
-    "testing",
-    "react",
-    "ui",
-    "dom",
-    "jsdom",
-    "unit",
-    "integration",
-    "functional",
-    "end-to-end",
-    "e2e"
-  ],
-  "author": "Kent C. Dodds <me@kentcdodds.com> (https://kentcdodds.com)",
-  "license": "MIT",
-  "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "@testing-library/dom": "^8.5.0",
-    "@types/react-dom": "^18.0.0"
-  },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.6",
-    "dotenv-cli": "^4.0.0",
-    "kcd-scripts": "^11.1.0",
-    "npm-run-all": "^4.1.5",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.1.2"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  },
-  "eslintConfig": {
-    "extends": "./node_modules/kcd-scripts/eslint.js",
-    "globals": {
-      "globalThis": "readonly"
+    "name": "@types/react",
+    "version": "18.0.26",
+    "description": "TypeScript definitions for React",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Asana",
+            "url": "https://asana.com"
+        },
+        {
+            "name": "AssureSign",
+            "url": "http://www.assuresign.com"
+        },
+        {
+            "name": "Microsoft",
+            "url": "https://microsoft.com"
+        },
+        {
+            "name": "John Reilly",
+            "url": "https://github.com/johnnyreilly",
+            "githubUsername": "johnnyreilly"
+        },
+        {
+            "name": "Benoit Benezech",
+            "url": "https://github.com/bbenezech",
+            "githubUsername": "bbenezech"
+        },
+        {
+            "name": "Patricio Zavolinsky",
+            "url": "https://github.com/pzavolinsky",
+            "githubUsername": "pzavolinsky"
+        },
+        {
+            "name": "Eric Anderson",
+            "url": "https://github.com/ericanderson",
+            "githubUsername": "ericanderson"
+        },
+        {
+            "name": "Dovydas Navickas",
+            "url": "https://github.com/DovydasNavickas",
+            "githubUsername": "DovydasNavickas"
+        },
+        {
+            "name": "Josh Rutherford",
+            "url": "https://github.com/theruther4d",
+            "githubUsername": "theruther4d"
+        },
+        {
+            "name": "Guilherme Hübner",
+            "url": "https://github.com/guilhermehubner",
+            "githubUsername": "guilhermehubner"
+        },
+        {
+            "name": "Ferdy Budhidharma",
+            "url": "https://github.com/ferdaber",
+            "githubUsername": "ferdaber"
+        },
+        {
+            "name": "Johann Rakotoharisoa",
+            "url": "https://github.com/jrakotoharisoa",
+            "githubUsername": "jrakotoharisoa"
+        },
+        {
+            "name": "Olivier Pascal",
+            "url": "https://github.com/pascaloliv",
+            "githubUsername": "pascaloliv"
+        },
+        {
+            "name": "Martin Hochel",
+            "url": "https://github.com/hotell",
+            "githubUsername": "hotell"
+        },
+        {
+            "name": "Frank Li",
+            "url": "https://github.com/franklixuefei",
+            "githubUsername": "franklixuefei"
+        },
+        {
+            "name": "Jessica Franco",
+            "url": "https://github.com/Jessidhia",
+            "githubUsername": "Jessidhia"
+        },
+        {
+            "name": "Saransh Kataria",
+            "url": "https://github.com/saranshkataria",
+            "githubUsername": "saranshkataria"
+        },
+        {
+            "name": "Kanitkorn Sujautra",
+            "url": "https://github.com/lukyth",
+            "githubUsername": "lukyth"
+        },
+        {
+            "name": "Sebastian Silbermann",
+            "url": "https://github.com/eps1lon",
+            "githubUsername": "eps1lon"
+        },
+        {
+            "name": "Kyle Scully",
+            "url": "https://github.com/zieka",
+            "githubUsername": "zieka"
+        },
+        {
+            "name": "Cong Zhang",
+            "url": "https://github.com/dancerphil",
+            "githubUsername": "dancerphil"
+        },
+        {
+            "name": "Dimitri Mitropoulos",
+            "url": "https://github.com/dimitropoulos",
+            "githubUsername": "dimitropoulos"
+        },
+        {
+            "name": "JongChan Choi",
+            "url": "https://github.com/disjukr",
+            "githubUsername": "disjukr"
+        },
+        {
+            "name": "Victor Magalhães",
+            "url": "https://github.com/vhfmag",
+            "githubUsername": "vhfmag"
+        },
+        {
+            "name": "Dale Tan",
+            "url": "https://github.com/hellatan",
+            "githubUsername": "hellatan"
+        },
+        {
+            "name": "Priyanshu Rav",
+            "url": "https://github.com/priyanshurav",
+            "githubUsername": "priyanshurav"
+        },
+        {
+            "name": "Dmitry Semigradsky",
+            "url": "https://github.com/Semigradsky",
+            "githubUsername": "Semigradsky"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/react"
     },
-    "rules": {
-      "react/prop-types": "off",
-      "react/no-adjacent-inline-elements": "off",
-      "import/no-unassigned-import": "off",
-      "import/named": "off",
-      "testing-library/no-container": "off",
-      "testing-library/no-dom-import": "off",
-      "testing-library/no-unnecessary-act": "off",
-      "testing-library/prefer-user-event": "off"
+    "scripts": {},
+    "dependencies": {
+        "@types/prop-types": "*",
+        "@types/scheduler": "*",
+        "csstype": "^3.0.2"
+    },
+    "typesPublisherContentHash": "cd368694add669e79e789ca680189618952e6297696daf9408b8ce05464bd413",
+    "typeScriptVersion": "4.2",
+    "exports": {
+        ".": {
+            "types": {
+                "default": "./index.d.ts"
+            }
+        },
+        "./next": {
+            "types": {
+                "default": "./next.d.ts"
+            }
+        },
+        "./experimental": {
+            "types": {
+                "default": "./experimental.d.ts"
+            }
+        },
+        "./jsx-runtime": {
+            "types": {
+                "default": "./jsx-runtime.d.ts"
+            }
+        },
+        "./jsx-dev-runtime": {
+            "types": {
+                "default": "./jsx-dev-runtime.d.ts"
+            }
+        },
+        "./package.json": "./package.json"
     }
-  },
-  "eslintIgnore": [
-    "node_modules",
-    "coverage",
-    "dist",
-    "*.d.ts"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/testing-library/react-testing-library"
-  },
-  "bugs": {
-    "url": "https://github.com/testing-library/react-testing-library/issues"
-  },
-  "homepage": "https://github.com/testing-library/react-testing-library#readme"
 }
