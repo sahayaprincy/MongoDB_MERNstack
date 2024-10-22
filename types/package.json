@@ -1,37 +1,84 @@
 {
-  "name": "@jest/types",
-  "version": "27.5.1",
+  "name": "@typescript-eslint/types",
+  "version": "5.48.0",
+  "description": "Types for the TypeScript-ESTree AST spec",
+  "keywords": [
+    "eslint",
+    "typescript",
+    "estree"
+  ],
+  "engines": {
+    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+  },
+  "files": [
+    "dist",
+    "_ts3.4",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/jest.git",
-    "directory": "packages/jest-types"
+    "url": "https://github.com/typescript-eslint/typescript-eslint.git",
+    "directory": "packages/types"
   },
-  "engines": {
-    "node": "^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0"
+  "bugs": {
+    "url": "https://github.com/typescript-eslint/typescript-eslint/issues"
   },
   "license": "MIT",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./build/index.d.ts",
-      "default": "./build/index.js"
-    },
-    "./package.json": "./package.json"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "yarn ts-node --transpile-only ./tools/copy-ast-spec.ts",
+    "build": "tsc -b tsconfig.build.json",
+    "postbuild": "downlevel-dts dist _ts3.4/dist",
+    "clean": "tsc -b tsconfig.build.json --clean",
+    "postclean": "rimraf dist && rimraf src/generated && rimraf _ts3.4 && rimraf coverage",
+    "format": "prettier --write \"./**/*.{ts,mts,cts,tsx,js,mjs,cjs,jsx,json,md,css}\" --ignore-path ../../.prettierignore",
+    "generate:lib": "../../node_modules/.bin/ts-node --files --transpile-only ../scope-manager/tools/generate-lib.ts",
+    "lint": "nx lint",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
-  "dependencies": {
-    "@types/istanbul-lib-coverage": "^2.0.0",
-    "@types/istanbul-reports": "^3.0.0",
-    "@types/node": "*",
-    "@types/yargs": "^16.0.0",
-    "chalk": "^4.0.0"
+  "nx": {
+    "targets": {
+      "prebuild": {
+        "dependsOn": [
+          {
+            "target": "build",
+            "projects": "dependencies"
+          }
+        ],
+        "outputs": [
+          "packages/types/src/generated"
+        ]
+      },
+      "build": {
+        "dependsOn": [
+          {
+            "target": "build",
+            "projects": "dependencies"
+          },
+          {
+            "target": "prebuild",
+            "projects": "self"
+          }
+        ]
+      }
+    }
+  },
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/typescript-eslint"
+  },
+  "typesVersions": {
+    "<3.8": {
+      "*": [
+        "_ts3.4/*"
+      ]
+    }
   },
   "devDependencies": {
-    "@tsd/typescript": "~4.1.5",
-    "tsd-lite": "^0.5.1"
+    "typescript": "*"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "gitHead": "67c1aa20c5fec31366d733e901fee2b981cb1850"
+  "gitHead": "4ab9bd7f7c1812df4371d1fd3202969c1039e8a7"
 }

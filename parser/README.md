@@ -1,19 +1,10 @@
-# @babel/parser
+# `@typescript-eslint/parser`
 
-> A JavaScript parser
+> An ESLint parser which leverages <a href="https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/typescript-estree">TypeScript ESTree</a> to allow for ESLint to lint TypeScript source code.
 
-See our website [@babel/parser](https://babeljs.io/docs/en/babel-parser) for more information or the [issues](https://github.com/babel/babel/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22pkg%3A%20parser%20(babylon)%22+is%3Aopen) associated with this package.
+[![NPM Version](https://img.shields.io/npm/v/@typescript-eslint/parser.svg?style=flat-square)](https://www.npmjs.com/package/@typescript-eslint/parser)
+[![NPM Downloads](https://img.shields.io/npm/dm/@typescript-eslint/parser.svg?style=flat-square)](https://www.npmjs.com/package/@typescript-eslint/parser)
 
-## Install
+👉 See **https://typescript-eslint.io/architecture/parser** for documentation on this package.
 
-Using npm:
-
-```sh
-npm install --save-dev @babel/parser
-```
-
-or using yarn:
-
-```sh
-yarn add @babel/parser --dev
-```
+> See https://typescript-eslint.io for general documentation on typescript-eslint, the tooling that allows you to run ESLint and Prettier on TypeScript code.
