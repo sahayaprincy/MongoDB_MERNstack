@@ -1,110 +1,86 @@
 {
-  "name": "@testing-library/dom",
-  "version": "8.19.1",
-  "description": "Simple and complete DOM testing utilities that encourage good testing practices.",
+  "name": "@testing-library/user-event",
+  "version": "13.5.0",
+  "description": "Fire events the same way the user does",
   "main": "dist/index.js",
-  "types": "types/index.d.ts",
-  "module": "dist/@testing-library/dom.esm.js",
-  "umd:main": "dist/@testing-library/dom.umd.js",
-  "source": "src/index.js",
   "keywords": [
-    "testing",
-    "ui",
-    "dom",
-    "jsdom",
-    "unit",
-    "integration",
-    "functional",
-    "end-to-end",
-    "e2e"
+    "react-testing-library",
+    "dom-testing-library",
+    "react",
+    "testing"
   ],
-  "author": "Kent C. Dodds <me@kentcdodds.com> (https://kentcdodds.com)",
+  "author": "Giorgio Polvara <polvara@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=12"
+    "node": ">=10",
+    "npm": ">=6"
   },
-  "browserslist": [
-    "and_chr 103",
-    "and_ff 101",
-    "and_qq 10.4",
-    "and_uc 12.12",
-    "android 103",
-    "chrome 102",
-    "edge 102",
-    "firefox 91",
-    "ios_saf 12.2-12.5",
-    "kaios 2.5",
-    "op_mini all",
-    "op_mob 64",
-    "opera 88",
-    "safari 15.5",
-    "samsung 17.0",
-    "samsung 16.0",
-    "node 12.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/testing-library/user-event"
+  },
+  "bugs": {
+    "url": "https://github.com/testing-library/user-event/issues"
+  },
+  "homepage": "https://github.com/testing-library/user-event#readme",
+  "files": [
+    "dist"
   ],
   "scripts": {
-    "build": "kcd-scripts build  --no-ts-defs --ignore \"**/__tests__/**,**/__node_tests__/**,**/__mocks__/**\" && kcd-scripts build --no-ts-defs --bundle --no-clean",
-    "format": "kcd-scripts format",
-    "install:csb": "npm install",
+    "build": "kcd-scripts build",
     "lint": "kcd-scripts lint",
     "setup": "npm install && npm run validate -s",
     "test": "kcd-scripts test",
-    "test:debug": "node --inspect-brk ./node_modules/.bin/jest --watch --runInBand",
+    "test:debug": "kcd-scripts --inspect-brk test --runInBand",
     "test:update": "npm test -- --updateSnapshot --coverage",
     "validate": "kcd-scripts validate",
-    "typecheck": "kcd-scripts typecheck --build types"
+    "typecheck": "kcd-scripts typecheck"
   },
-  "files": [
-    "dist",
-    "types/*.d.ts"
-  ],
   "dependencies": {
-    "@babel/code-frame": "^7.10.4",
-    "@babel/runtime": "^7.12.5",
-    "@types/aria-query": "^5.0.1",
-    "aria-query": "^5.0.0",
-    "chalk": "^4.1.0",
-    "dom-accessibility-api": "^0.5.9",
-    "lz-string": "^1.4.4",
-    "pretty-format": "^27.0.2"
+    "@babel/runtime": "^7.12.5"
   },
   "devDependencies": {
+    "@testing-library/dom": "^7.28.1",
     "@testing-library/jest-dom": "^5.11.6",
-    "@types/lz-string": "^1.3.34",
+    "@testing-library/react": "^11.2.5",
+    "@types/estree": "0.0.45",
+    "@types/jest-in-case": "^1.0.3",
+    "@types/react": "^17.0.3",
+    "is-ci": "^2.0.0",
     "jest-in-case": "^1.0.2",
-    "jest-snapshot-serializer-ansi": "^1.0.0",
-    "jest-watch-select-projects": "^2.0.0",
-    "jsdom": "^16.4.0",
-    "kcd-scripts": "^11.0.0",
+    "jest-serializer-ansi": "^1.0.3",
+    "kcd-scripts": "^11.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "typescript": "^4.1.2"
   },
+  "peerDependencies": {
+    "@testing-library/dom": ">=7.21.4"
+  },
   "eslintConfig": {
-    "extends": [
-      "./node_modules/kcd-scripts/eslint.js",
-      "plugin:import/typescript"
-    ],
+    "extends": "./node_modules/kcd-scripts/eslint.js",
     "rules": {
-      "@typescript-eslint/prefer-optional-chain": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/prefer-includes": "off",
-      "import/prefer-default-export": "off",
-      "import/no-unassigned-import": "off",
-      "import/no-useless-path-segments": "off",
-      "no-console": "off"
-    }
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/tabindex-no-positive": "off",
+      "no-func-assign": "off",
+      "no-return-assign": "off",
+      "react/prop-types": "off",
+      "testing-library/no-dom-import": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/**"
+        ],
+        "rules": {
+          "no-console": "off"
+        }
+      }
+    ]
   },
   "eslintIgnore": [
     "node_modules",
     "coverage",
     "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/testing-library/dom-testing-library"
-  },
-  "bugs": {
-    "url": "https://github.com/testing-library/dom-testing-library/issues"
-  },
-  "homepage": "https://github.com/testing-library/dom-testing-library#readme"
+  ]
 }
