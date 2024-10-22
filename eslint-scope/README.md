@@ -1,85 +1,54 @@
-# Installation
-> `npm install --save @types/eslint-scope`
+# ESLint Scope
 
-# Summary
-This package contains type definitions for eslint-scope (https://github.com/eslint/eslint-scope).
+ESLint Scope is the [ECMAScript](http://www.ecma-international.org/publications/standards/Ecma-262.htm) scope analyzer used in ESLint. It is a fork of [escope](http://github.com/estools/escope).
 
-# Details
-Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/eslint-scope.
-## [index.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/eslint-scope/index.d.ts)
-````ts
-// Type definitions for eslint-scope 3.7
-// Project: https://github.com/eslint/eslint-scope
-// Definitions by: Toru Nagashima <https://github.com/mysticatea>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 3.8
-import * as eslint from "eslint";
-import * as estree from "estree";
+## Usage
 
-export const version: string;
+Install:
 
-export class ScopeManager implements eslint.Scope.ScopeManager {
-    scopes: Scope[];
-    globalScope: Scope;
-    acquire(node: {}, inner?: boolean): Scope | null;
-    getDeclaredVariables(node: {}): Variable[];
-}
+```
+npm i eslint-scope --save
+```
 
-export class Scope implements eslint.Scope.Scope {
-    type: "block" | "catch" | "class" | "for" | "function" | "function-expression-name" | "global" | "module" | "switch" | "with" | "TDZ";
-    isStrict: boolean;
-    upper: Scope | null;
-    childScopes: Scope[];
-    variableScope: Scope;
-    block: estree.Node;
-    variables: Variable[];
-    set: Map<string, Variable>;
-    references: Reference[];
-    through: Reference[];
-    functionExpressionScope: boolean;
-}
+Example:
 
-export class Variable implements eslint.Scope.Variable {
-    name: string;
-    scope: Scope;
-    identifiers: estree.Identifier[];
-    references: Reference[];
-    defs: eslint.Scope.Definition[];
-}
+```js
+var eslintScope = require('eslint-scope');
+var espree = require('espree');
+var estraverse = require('estraverse');
 
-export class Reference implements eslint.Scope.Reference {
-    identifier: estree.Identifier;
-    from: Scope;
-    resolved: Variable | null;
-    writeExpr: estree.Node | null;
-    init: boolean;
+var ast = espree.parse(code);
+var scopeManager = eslintScope.analyze(ast);
 
-    isWrite(): boolean;
-    isRead(): boolean;
-    isWriteOnly(): boolean;
-    isReadOnly(): boolean;
-    isReadWrite(): boolean;
-}
+var currentScope = scopeManager.acquire(ast);   // global scope
 
-export interface AnalysisOptions {
-    optimistic?: boolean;
-    directive?: boolean;
-    ignoreEval?: boolean;
-    nodejsScope?: boolean;
-    impliedStrict?: boolean;
-    fallback?: string | ((node: {}) => string[]);
-    sourceType?: "script" | "module";
-    ecmaVersion?: number;
-}
+estraverse.traverse(ast, {
+    enter: function(node, parent) {
+        // do stuff
 
-export function analyze(ast: {}, options?: AnalysisOptions): ScopeManager;
+        if (/Function/.test(node.type)) {
+            currentScope = scopeManager.acquire(node);  // get current function scope
+        }
+    },
+    leave: function(node, parent) {
+        if (/Function/.test(node.type)) {
+            currentScope = currentScope.upper;  // set to parent scope
+        }
 
-````
+        // do stuff
+    }
+});
+```
 
-### Additional Details
- * Last updated: Thu, 30 Jun 2022 19:02:28 GMT
- * Dependencies: [@types/eslint](https://npmjs.com/package/@types/eslint), [@types/estree](https://npmjs.com/package/@types/estree)
- * Global values: none
+## Contributing
 
-# Credits
-These definitions were written by [Toru Nagashima](https://github.com/mysticatea).
+Issues and pull requests will be triaged and responded to as quickly as possible. We operate under the [ESLint Contributor Guidelines](http://eslint.org/docs/developer-guide/contributing), so please be sure to read them before contributing. If you're not sure where to dig in, check out the [issues](https://github.com/eslint/eslint-scope/issues).
+
+## Build Commands
+
+* `npm test` - run all linting and tests
+* `npm run lint` - run all linting
+
+## License
+
+ESLint Scope is licensed under a permissive BSD 2-clause license.
