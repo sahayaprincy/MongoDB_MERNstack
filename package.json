@@ -1,67 +1,58 @@
 {
-  "name": "@typescript-eslint/scope-manager",
-  "version": "5.48.0",
-  "description": "TypeScript scope analyser for ESLint",
+  "description": "The iconic font, CSS, and SVG framework",
   "keywords": [
-    "eslint",
-    "typescript",
-    "estree"
+    "font",
+    "awesome",
+    "fontawesome",
+    "icon",
+    "svg",
+    "bootstrap"
   ],
-  "engines": {
-    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+  "homepage": "https://fontawesome.com",
+  "bugs": {
+    "url": "http://github.com/FortAwesome/Font-Awesome/issues"
   },
-  "files": [
-    "dist",
-    "package.json",
-    "README.md",
-    "LICENSE"
+  "author": {
+    "name": "Dave Gandy",
+    "email": "dave@fontawesome.com",
+    "web": "http://twitter.com/davegandy"
+  },
+  "contributors": [
+    {
+      "name": "Brian Talbot",
+      "web": "http://twitter.com/talbs"
+    },
+    {
+      "name": "Travis Chase",
+      "web": "http://twitter.com/supercodepoet"
+    },
+    {
+      "name": "Rob Madole",
+      "web": "http://twitter.com/robmadole"
+    },
+    {
+      "name": "Geremia Taglialatela",
+      "web": "http://twitter.com/gtagliala"
+    },
+    {
+      "name": "Mike Wilkerson",
+      "web": "http://twitter.com/mw77"
+    }
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/typescript-eslint/typescript-eslint.git",
-    "directory": "packages/scope-manager"
+    "url": "https://github.com/FortAwesome/Font-Awesome"
   },
-  "bugs": {
-    "url": "https://github.com/typescript-eslint/typescript-eslint/issues"
+  "engines": {
+    "node": ">=6"
   },
-  "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "dependencies": {},
+  "version": "5.15.4",
+  "name": "@fortawesome/fontawesome-free",
+  "main": "js/fontawesome.js",
+  "style": "css/fontawesome.css",
+  "license": "(CC-BY-4.0 AND OFL-1.1 AND MIT)",
   "scripts": {
-    "build": "nx build",
-    "clean": "nx clean",
-    "clean-fixtures": "nx clean-fixtures",
-    "format": "prettier --write \"./**/*.{ts,mts,cts,tsx,js,mjs,cjs,jsx,json,md,css}\" --ignore-path ../../.prettierignore",
-    "generate:lib": "nx generate-lib",
-    "lint": "nx lint",
-    "test": "nx test --code-coverage",
-    "typecheck": "nx typecheck"
-  },
-  "dependencies": {
-    "@typescript-eslint/types": "5.48.0",
-    "@typescript-eslint/visitor-keys": "5.48.0"
-  },
-  "devDependencies": {
-    "@types/glob": "*",
-    "@typescript-eslint/typescript-estree": "5.48.0",
-    "glob": "*",
-    "jest-specific-snapshot": "*",
-    "make-dir": "*",
-    "prettier": "*",
-    "pretty-format": "*",
-    "rimraf": "*",
-    "typescript": "*"
-  },
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/typescript-eslint"
-  },
-  "typesVersions": {
-    "<3.8": {
-      "*": [
-        "_ts3.4/*"
-      ]
-    }
-  },
-  "gitHead": "4ab9bd7f7c1812df4371d1fd3202969c1039e8a7"
+    "postinstall": "node attribution.js"
+  }
 }
